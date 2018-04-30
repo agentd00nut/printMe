@@ -1,0 +1,23 @@
+void serialEvent(Serial p) {
+  char serialChar = p.readChar();
+
+  if (serialChar == 19) {
+    plotter.bufferFull = true;
+    println("Buffer full");
+  }
+  if (serialChar == 17) {
+    plotter.bufferFull = false;
+    println("Buffer empty");
+  }
+
+
+# http://paulbourke.net/dataformats/hpgl/
+
+# https://cotejp.github.io/hpgl/Plotter.html nodeJS 
+
+# http://europlotter.com/europlotter/Machines_files/hpgl.pdf
+
+
+ESC.B "Outputs the number of currently free memory locations in the plotter buffer"
+ESC.L "Outputs the available buffer size " ( Total size regardless of usage )
+ESC.S "Comment:Buffer number is ignored, therefore same result as ESC.L" (lol okay?)
